@@ -1,0 +1,13 @@
+@import './base.scss';
+
+.App-footer {
+  background-color: $dark-blue;
+  height: 10vh;
+  width: 100%;
+  bottom: 0;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+}

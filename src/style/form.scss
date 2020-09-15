@@ -1,0 +1,70 @@
+@import './base.scss';
+
+.form  {
+  margin: 30px 0;
+  display: flex;
+  width: 100%;
+  height: 40px;
+  justify-content: space-between;
+  align-items: center;
+
+  fieldset {
+    width: 40%;
+    height: 100%;
+  }
+
+  fieldset:last-of-type {
+    position: relative;
+  }
+
+  input[placeholder="http://"] {
+    width: 80%;
+    font-size: 1.1em;
+  }
+
+  input[type="radio"] {
+    opacity: 0;
+    position: absolute;
+    border-radius: 0;
+    bottom: 10px;
+    height: 28px;
+    width: 60px;
+    margin: 0 20px;
+  }
+
+  input[type="radio"] + label {
+    margin: 0 20px;
+    padding: 5px;
+    width: 100px;
+    border-radius: 3px;
+  }
+  input[type="radio"]:hover + label {
+    border: 1px solid $dark-blue;
+    cursor: pointer;
+  }
+  
+  input[type="radio"]:checked + label {
+    background-color: $dark-blue;
+    color: white;
+    font-weight: bold;
+  }
+
+  button {
+    height: 90%;
+    align-self: center;
+    width: 70px;
+  }
+}
+
+.form + div {
+  height: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  
+  span {
+    margin: 5px;
+  }
+}
