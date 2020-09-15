@@ -1,11 +1,9 @@
 import React from 'react';
 
-function Header() {
+export default () => {
   return (
     <header className="App-header">
       <h1>RESTy</h1>
     </header>
   );
 }
-
-export default Header;
