@@ -1,5 +1,10 @@
 import React from 'react';
-import './App.css';
+
+import './style/base.scss';
+import './style/header.scss';
+import './style/form.scss';
+import './style/results.scss';
+import './style/footer.scss';
 
 import Header from './components/header';
 import Form from './components/form';
@@ -10,24 +15,24 @@ class App extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      requestData:null,
+      resultsIn: null,
+    };
   }
 
-  getResults = (url, method) => {
-    this.setState({ url, method })
-
-    console.log('hi back in app component')
-    console.log(url, method)
+  getResults = (requestData) => {
+    this.setState({ requestData, resultsIn:'results' })
   }
 
   render = () => (
     <div className="App">
       <Header />
       <main>
-        <Form handleInput={this.getResults} />
+        <Form handleInput={this.getResults}  />
+        <Results data={this.state.requestData} resultsIn={this.state.resultsIn}/>
       </main>
       <Footer />
-      {/* <Results /> */}
     </div>
   );
 }

@@ -1,0 +1,13 @@
+@import './base.scss';
+
+#results{
+  pre {
+    max-height: 40vh;
+    border: 1px solid black;
+    padding: 20px;
+    
+    div {
+      padding: 2px 0;
+    }
+  }
+}

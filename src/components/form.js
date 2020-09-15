@@ -13,41 +13,39 @@ class Form extends React.Component {
   setMethod = e => this.setState({ method: e.target.value })
   setUrl = e => this.setState({ url: e.target.value });
 
-  
 
-  sendInput = () => {
-    this.props.handleInput(this.state.url, this.state.method);
+
+  sendInput = async () => {
+    let rawData = await fetch(this.state.url);
+    this.props.handleInput(await rawData.json());
   };
 
   render = () => (
-      <>
-
-        <section className="form">
+    <>
+      <section className="form">
         <fieldset>
           <legend>URL</legend>
           <input placeholder="http://" onChange={this.setUrl} />
         </fieldset>
         <fieldset>
           <legend>Method</legend>
-          <input type="radio" value="GET" name="method" onChange={this.setMethod} />
-          <label htmlFor="GET">GET</label>
-          <input type="radio" value="POST" name="method" onChange={this.setMethod} />
-          <label htmlFor="POST">POST</label>
-          <input type="radio" value="PUT" name="method" onChange={this.setMethod} />
-          <label htmlFor="PUT">PUT</label>
-          <input type="radio" value="DELETE" name="method" onChange={this.setMethod} />
-          <label htmlFor="DELETE">DELETE</label>
+          <div>
+
+            <input type="radio" value="GET" name="method" onChange={this.setMethod} />
+            <label htmlFor="GET">GET</label>
+            <input type="radio" value="POST" name="method" onChange={this.setMethod} />
+            <label htmlFor="POST">POST</label>
+            <input type="radio" value="PUT" name="method" onChange={this.setMethod} />
+            <label htmlFor="PUT">PUT</label>
+            <input type="radio" value="DELETE" name="method" onChange={this.setMethod} />
+            <label htmlFor="DELETE">DELETE</label>
+          </div>
         </fieldset>
         <button onClick={this.sendInput}>Go</button>
-        </section>
+      </section>
 
-        {/* <div>
-          <span>{this.state.method}</span>
-          <span>{this.state.url}</span>
-        </div> */}
-
-      </>
-    );
+    </>
+  );
 }
 
 export default Form;
