@@ -6,23 +6,22 @@ class Form extends React.Component {
     this.state = {
       method: '',
       url: '',
-      urlPlaceholder: '',
-      methodPlaceholder: ''
+
     }
   }
 
-  setMethod = e => this.setState({ methodPlaceholder: e.target.value })
-  setUrl = e => this.setState({ urlPlaceholder: e.target.value });
+  setMethod = e => this.setState({ method: e.target.value })
+  setUrl = e => this.setState({ url: e.target.value });
 
-  showUrlAndMethod = e => {
-    e.preventDefault();
-    this.setState({ url: this.state.urlPlaceholder })
-    this.setState({ method: this.state.methodPlaceholder })
+  
+
+  sendInput = () => {
+    this.props.handleInput(this.state.url, this.state.method);
   };
 
-  render() {
-    return (
-      <div >
+  render = () => (
+      <>
+
         <section className="form">
         <fieldset>
           <legend>URL</legend>
@@ -39,17 +38,16 @@ class Form extends React.Component {
           <input type="radio" value="DELETE" name="method" onChange={this.setMethod} />
           <label htmlFor="DELETE">DELETE</label>
         </fieldset>
-        <button onClick={this.showUrlAndMethod}>Go</button>
+        <button onClick={this.sendInput}>Go</button>
         </section>
 
-        <div>
+        {/* <div>
           <span>{this.state.method}</span>
           <span>{this.state.url}</span>
-        </div>
+        </div> */}
 
-      </div>
+      </>
     );
-  }
 }
 
 export default Form;
