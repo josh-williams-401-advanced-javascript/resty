@@ -1,8 +1,10 @@
 import React from 'react'
-import { render, fireEvent, waitFor, screen } from '@testing-library/react'
-import '@testing-library/jest-dom/extend-expect'
-import App from '../App'
-import Results from '../components/results'
+
+// eslint-disable-next-line no-unused-vars
+import { render, fireEvent, waitFor, screen } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
+import App from '../App';
+import Results from '../components/results';
 
 it('renders learn react link', () => {
   const { getByText } = render(<App />);
