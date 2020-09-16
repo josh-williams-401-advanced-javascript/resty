@@ -16,7 +16,10 @@
   fieldset div {
     position: relative;
     height: 100%;
-    // margin-bottom: 5px;;
+  }
+
+  legend {
+    font-size: 1.1em;
   }
 
   input[placeholder="http://"] {
