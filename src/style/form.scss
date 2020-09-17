@@ -35,24 +35,24 @@
     height: 40px;
     width: 80px;
     margin: 0 20px;
+
+    &:checked + label {
+      background-color: $dark-blue;
+      color: white;
+      font-weight: bold;
+    }
+    &+ label {
+      margin: 5px 30px 0 30px;
+      padding: 5px;
+      width: 200px;
+      border-radius: 3px;
+    }
+    &:hover + label {
+      border: 1px solid $dark-blue;
+      cursor: pointer;
+    }
   }
 
-  input[type="radio"] + label {
-    margin: 5px 30px 0 30px;
-    padding: 5px;
-    width: 200px;
-    border-radius: 3px;
-  }
-  input[type="radio"]:hover + label {
-    border: 1px solid $dark-blue;
-    cursor: pointer;
-  }
-  
-  input[type="radio"]:checked + label {
-    background-color: $dark-blue;
-    color: white;
-    font-weight: bold;
-  }
 
   button {
     height: 75%;
@@ -61,9 +61,10 @@
     color: white;
     font-size: 1.5em;
     width: 100px;
-  }
-  button:hover {
-    cursor: pointer;
+    
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
 textarea {

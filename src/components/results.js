@@ -12,7 +12,11 @@ const customTheme = {
 class Results extends React.Component {
 
   render = () => {
-    if (this.props.resultsIn !== null) {
+    if (this.props.resultsIn === 'error') {
+      return <h1>Bad Request</h1>
+    
+    } else if (this.props.resultsIn !== null) {
+
       return (
         <>
           <div id={this.props.resultsIn}>
@@ -25,15 +29,16 @@ class Results extends React.Component {
           </div>
         </>
       )
+
     } else {
       return this.props.loading ? (
         <section id="logo">
           < img src={loadingImage} alt="loading" />
         </section>
-        ) : null;
+      ) : null;
 
+    }
   }
-}
 }
 
 export default Results;

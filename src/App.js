@@ -16,18 +16,32 @@ import History from './components/history';
 
 class App extends React.Component { 
 
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       requestData:null,
       resultsIn: null,
       loading: false,
       pastSearches: JSON.parse(localStorage.getItem('pastSearches')),
+      method:'GET',
+      // url:'http://',
+      // data:'',
     };
   }
 
+  // setUrl = (url) => {
+  //   console.log(url);
+  //   this.setState({url});
+  // }
+  // setMethod = (method) => this.setState({method});
+  // setData = (data) => this.setState({data});
+
   talkToApi = async (requestObj) => {
+
     this.toggleLoading()
+    this.setState({ url: requestObj.url, data: requestObj.data});
+    this.setState({ method: requestObj.method})
+
     try {
       let results = await axios(requestObj);
       this.getResults(results);
@@ -35,13 +49,13 @@ class App extends React.Component {
     } catch(e) {
       console.log(e)
       this.toggleLoading();
+      this.setState({resultsIn:'error', requestData:'Bad Request'});
     }
   }
 
   toggleLoading = () => this.setState({loading: !this.state.loading});
 
   getResults = (requestData) => {
-    console.log('in get results')
     this.toggleLoading();
     this.setState({ requestData, resultsIn:'results' })
   }
@@ -50,8 +64,6 @@ class App extends React.Component {
     const hash = md5(JSON.stringify(requestObj))
 
     await this.setState({pastSearches: { ...this.state.pastSearches, [hash]: requestObj }});
-    
-    console.log(this.state.pastSearches);
 
     let stringifiedObj = JSON.stringify(this.state.pastSearches);
 
@@ -62,9 +74,9 @@ class App extends React.Component {
     <div className="App">
       <Header />
       <main>
-        <Form handleInput={this.talkToApi}  />
+        <Form handleInput={this.talkToApi} defaultUrl={this.state.url} defaultMethod={this.state.method} defaultData={this.state.data}  />
         <History pastSearches={this.state.pastSearches} talkToApi={this.talkToApi}/>
-        <Results data={this.state.requestData} resultsIn={this.state.resultsIn} loading={this.state.loading}/>
+        <Results data={this.state.requestData} resultsIn={this.state.resultsIn} loading={this.state.loading} />
       </main>
       <Footer />
     </div>
