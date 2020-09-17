@@ -8,6 +8,7 @@
 
 - [Custom Radio Form](https://www.w3schools.com/howto/howto_css_custom_checkbox.asp)
 - [Test Help](https://stackoverflow.com/questions/56267336/react-testing-library-check-the-existence-of-empty-div)
+- Loading spinner provided by `loading.io`
 
 # Class 27
 

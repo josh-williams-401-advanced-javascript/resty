@@ -1,7 +1,7 @@
 @import './base.scss';
 
 .form  {
-  margin: 30px 0;
+  margin: 30px 0 15px 0;
   display: flex;
   width: 100%;
   height: 60px;
@@ -65,5 +65,10 @@
   button:hover {
     cursor: pointer;
   }
+}
+textarea {
+  font-family: 'Courier New', Courier, monospace;
+  color:black;
+  font-weight: bold; 
 }
 
