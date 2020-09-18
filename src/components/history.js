@@ -1,24 +1,78 @@
 import React from 'react';
+import { Switch, Route, Link } from 'react-router-dom';
 
-export default (props) => {
+class Histroy extends React.Component {
 
-  const makeRequest = (request) => {
-    props.talkToApi(request);
+  constructor(props) {
+    super(props);
+    this.state = {
+      showDetails: false,
+      hash:'',
+    }
   }
+  makeRequest = (request) => {
+    this.props.talkToApi(request);
+    this.setState({showDetails: false});
+  }
+  showRequestDetails = (hash) => {
+    this.setState({
+      showDetails: true,
+      hash:hash,
+    });
+  }
+  
+  render = () => {
+    if (this.props.pastSearches) {
+      return (
+        <Switch>
+          <Route exact path="/">
+            <aside>
+              <ul>
+                {
+                  Object.keys(this.props.pastSearches).map(hash =>
+                    <li key={hash}>
+                      <span className={this.props.pastSearches[hash].method}>{this.props.pastSearches[hash].method} </span>
+                      <button onClick={() => this.makeRequest(this.props.pastSearches[hash])}> {this.props.pastSearches[hash].url} </button>
+                    </li>
+                  )}
+              </ul>
+            </aside >
+          </Route>
+          <Route exact path="/history">
+            <h2>History</h2>
+            <aside>
+              <ul>
+                {
+                  Object.keys(this.props.pastSearches).map(hash =>
+                    <li key={hash}>
+                      <span className={this.props.pastSearches[hash].method}>{this.props.pastSearches[hash].method} </span>
+                      <span onClick={() => this.showRequestDetails(hash)}> {this.props.pastSearches[hash].url} </span>
+                    </li>
+                  )}
+              </ul>
+            </aside >
+                  {  (this.state.showDetails) ?
+                  <div>
 
-  // return (
-  if (props.pastSearches) {
-    return (<aside>
-      <ul>
-        {
-          Object.keys(props.pastSearches).map(hash =>
-            <li key={hash}>
-              <span className={props.pastSearches[hash].method}>{props.pastSearches[hash].method} </span>
-              <button onClick={() => makeRequest(props.pastSearches[hash])}> {props.pastSearches[hash].url} </button>
-            </li>
-          )}
-      </ul>
-    </aside>
-  );
-} else { return null;}
+                    <p>{this.props.pastSearches[this.state.hash].method}</p>
+                    <p>{this.props.pastSearches[this.state.hash].url}</p>
+                    <p>{this.props.pastSearches[this.state.hash].data}</p>
+
+                    <Link to="/" onClick={() => this.makeRequest(this.props.pastSearches[this.state.hash])}>
+                      Re-Run
+                    </Link>
+
+                  </div>
+                  
+                  : null }
+          </Route>
+        </Switch>
+      );
+    } else { return (
+      <Route path="/history">
+        <h2>History</h2>
+      </Route>
+    )}
+  }
 }
+export default Histroy;
