@@ -1,4 +1,5 @@
 import React from 'react';
+import { Switch, Route } from 'react-router-dom';
 
 
 class Form extends React.Component {
@@ -20,6 +21,7 @@ class Form extends React.Component {
   sendInput = () => this.props.handleInput(this.state);
 
   render = () => (
+    <Route exact path="/">
     <>
       <section className="form">
 
@@ -31,9 +33,9 @@ class Form extends React.Component {
         <fieldset>
           <legend>Method</legend>
           <div>
-            <input type="radio" value="GET" name="method" onChange={this.setMethod}
+            <input type="radio" aria-checked="true" value="GET" name="method" onChange={this.setMethod}
               defaultChecked={ this.state.method === "GET" ? true : false } />
-            <label htmlFor="GET">GET</label>
+            <label  htmlFor="GET">GET</label>
 
 
             <input data-testid="methodInput" type="radio" value="POST" name="method" onChange={this.setMethod} checked={this.state.method === "POST" ? true : false} />
@@ -51,14 +53,13 @@ class Form extends React.Component {
 
         <button data-testid="submit" onClick={this.sendInput}>Go</button>
 
-
-
       </section>
       <fieldset>
         <legend>Body</legend>
         <textarea onChange={this.setData} defaultValue={this.props.defaultData}></textarea>
       </fieldset>
     </>
+    </Route>
   );
 }
 

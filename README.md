@@ -11,6 +11,44 @@
 - [Test Help](https://stackoverflow.com/questions/56267336/react-testing-library-check-the-existence-of-empty-div)
 - Loading spinner provided by `loading.io`
 
+# Class 29
+
+### Setup
+
+```
+git clone https://github.com/josh-williams-401-advanced-javascript/resty.git
+
+cd resty
+```
+
+#### `.env` requirements
+
+N/A  
+
+#### How to initialize/run your application  
+```
+npm start
+```
+
+#### How to use your library 
+Check out different sections of the site by clicking on the links in the nav bar. On the website, enter an API request url, select a method, and press submit. The results will be displayed beneath. Make different types of requests by select `GET`, `POST`, `PUT`, or `DELETE`, and fill out the body as needed. There is a spinner to watch while the results load. Past searches will be saved in Local Storage. If you click on old requests, it will make get the results again, and fill out the form (mostly) to match the request. If you change an input field, this feature will not work as well.  
+Once you have items in your history, check out the history page. There you will see a list of results. Click on one to see the details of the original request. Click the re-run button to repeat that API call, and you will be redirected to the home page.  
+Example API call:
+```
+https://swapi.dev/api/planets/
+```
+Feel free to test others.
+
+#### Tests
+```
+npm test
+```
+
+#### UML
+
+![UML](./public/img/uml-lab-29.png)
+
+
 # Class 28
 
 ### Setup

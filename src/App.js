@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import axios from 'axios';
 import md5 from 'md5';
 
@@ -7,12 +8,14 @@ import './style/header.scss';
 import './style/form.scss';
 import './style/results.scss';
 import './style/footer.scss';
+import './style/nav.scss';
 
 import Header from './components/header';
 import Form from './components/form';
 import Footer from './components/footer';
 import Results from './components/results';
 import History from './components/history';
+import Help from './components/help';
 
 class App extends React.Component { 
 
@@ -24,17 +27,8 @@ class App extends React.Component {
       loading: false,
       pastSearches: JSON.parse(localStorage.getItem('pastSearches')),
       method:'GET',
-      // url:'http://',
-      // data:'',
     };
   }
-
-  // setUrl = (url) => {
-  //   console.log(url);
-  //   this.setState({url});
-  // }
-  // setMethod = (method) => this.setState({method});
-  // setData = (data) => this.setState({data});
 
   talkToApi = async (requestObj) => {
 
@@ -71,15 +65,16 @@ class App extends React.Component {
   }
 
   render = () => (
-    <div className="App">
+    <BrowserRouter className="App">
       <Header />
       <main>
+        <Help />
         <Form handleInput={this.talkToApi} defaultUrl={this.state.url} defaultMethod={this.state.method} defaultData={this.state.data}  />
         <History pastSearches={this.state.pastSearches} talkToApi={this.talkToApi}/>
         <Results data={this.state.requestData} resultsIn={this.state.resultsIn} loading={this.state.loading} />
       </main>
       <Footer />
-    </div>
+    </BrowserRouter>
   );
 }
 
