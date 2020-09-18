@@ -8,13 +8,13 @@ export default () => {
       <nav>
         <ul>
           <li>
-            <NavLink to="/">Home</NavLink>
+            <NavLink data-testid="homelink" to="/">Home</NavLink>
           </li>
           <li>
-            <NavLink to="/history">History</NavLink>
+            <NavLink data-testid="historylink" to="/history">History</NavLink>
           </li>
           <li>
-            <NavLink to="/help">Help</NavLink>
+            <NavLink data-testid="helplink" to="/help">Help</NavLink>
           </li>
         </ul>
       </nav>
