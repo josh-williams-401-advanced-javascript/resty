@@ -52,9 +52,7 @@ class Form extends React.Component {
         </fieldset>
 
         <button data-testid="submit" onClick={this.sendInput}>Go</button>
-
-
-
+        
       </section>
       <fieldset>
         <legend>Body</legend>

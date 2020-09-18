@@ -8,6 +8,7 @@ import './style/header.scss';
 import './style/form.scss';
 import './style/results.scss';
 import './style/footer.scss';
+import './style/nav.scss';
 
 import Header from './components/header';
 import Form from './components/form';
@@ -26,17 +27,8 @@ class App extends React.Component {
       loading: false,
       pastSearches: JSON.parse(localStorage.getItem('pastSearches')),
       method:'GET',
-      // url:'http://',
-      // data:'',
     };
   }
-
-  // setUrl = (url) => {
-  //   console.log(url);
-  //   this.setState({url});
-  // }
-  // setMethod = (method) => this.setState({method});
-  // setData = (data) => this.setState({data});
 
   talkToApi = async (requestObj) => {
 
