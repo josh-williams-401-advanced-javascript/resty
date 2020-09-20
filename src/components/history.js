@@ -41,30 +41,29 @@ class Histroy extends React.Component {
           </Route>
           <Route exact path="/history">
             <h2>History</h2>
-            <aside>
+            <aside className="history">
               <ul>
                 {
                   Object.keys(this.props.pastSearches).map(hash =>
                     <li key={hash}>
                       <span className={this.props.pastSearches[hash].method}>{this.props.pastSearches[hash].method}</span>
-                      <span onClick={() => this.showRequestDetails(hash)}>{this.props.pastSearches[hash].url}</span>
+                      <button onClick={() => this.showRequestDetails(hash)}>{this.props.pastSearches[hash].url}</button>
                     </li>
                   )}
               </ul>
             </aside >
                   {  (this.state.showDetails) ?
+                  
                   <div>
-
+                  <h2>Details</h2>
                     <p>{this.props.pastSearches[this.state.hash].method}</p>
                     <p>{this.props.pastSearches[this.state.hash].url}</p>
                     <p>{this.props.pastSearches[this.state.hash].data}</p>
-
                     <Link to="/" onClick={() => this.makeRequest(this.props.pastSearches[this.state.hash])}>
                       Re-Run
                     </Link>
-
                   </div>
-                  
+                
                   : null }
           </Route>
         </Switch>

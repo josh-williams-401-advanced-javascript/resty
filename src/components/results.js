@@ -16,7 +16,7 @@ class Results extends React.Component {
     return (
       <Route exact path="/">
         {
-          (this.props.resultsIn === 'error') ? <h1>Bad Request</h1>
+          (this.props.resultsIn === 'error') ? <h2 id="results">Bad Request</h2>
             : (this.props.resultsIn !== null) ?
               (
                 <>

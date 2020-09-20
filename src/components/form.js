@@ -23,7 +23,7 @@ class Form extends React.Component {
   render = () => (
     <Route exact path="/">
     <>
-        <h2>Make API Request</h2>
+        <h2>API Request</h2>
       <section className="form">
 
         <fieldset>

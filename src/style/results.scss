@@ -21,11 +21,18 @@
 }
 aside {
   margin: 10px 0;
-  display: inline;
+  // display: inline;
   grid-row: 3 / span 2;
+  overflow-x: scroll;
+  &.history {
+    grid-row: 2 / span 2;
+    overflow-x: visible;
+  }
   li {
     list-style-type: none;
     margin-bottom: 20px;
+    display: inline-flex;
+    width: 100%;
     span {
       padding: 6px;
       text-align: center;
@@ -33,12 +40,38 @@ aside {
       border: 1px solid black;
       margin-right: 5px;
     }
+    button {
+      // justify-self: end;
+      width: 100%;
+      background-color: white;
+      border-radius: 5px;
+      border: solid 1px black;
+      
+    }
   }
   .GET {
     background-color: rgb(95, 247, 95);
+    & + button:hover{
+      background-color: rgba(95, 247, 95, .2);   
+    }
   }
   .POST {
     background-color: rgb(249, 195, 95);
+    & + button:hover{
+      background-color:  rgba(249, 195, 95, .2);  
+    }
+  }
+  .DELETE {
+    background-color: rgb(250, 136, 116);
+    & + button:hover{
+      background-color:  rgba(250, 136, 116, .2);  
+    }
+  }
+  .PUT {
+    background-color: rgb(161, 161, 250);
+    & + button:hover{
+      background-color:  rgba(161, 161, 250, .2);  
+    }
   }
   h2 {
     margin: 0 0 20px 0;
@@ -46,7 +79,9 @@ aside {
   ul {
     // margin-top: 20px;
     padding-left: 0;
-    display: inline;
+    // display: inline;
+    width: 100%;
+    
 
   }
 }
