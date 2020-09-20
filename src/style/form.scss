@@ -19,8 +19,15 @@ fieldset {
   }
 
 }
+
 #code-area {
   border: 20px solid black;
+  // color: black;
+}
+textarea {
+  resize: none;
+  height: 90%;
+  width: 100%;
 }
 
 .form  {

@@ -10,12 +10,12 @@ class Histroy extends React.Component {
       hash:'',
     }
   }
-  makeRequest = (request) => {
-    this.props.talkToApi(request);
-    this.setState({showDetails: false});
+  makeRequest = async (request) => {
+    await this.props.talkToApi(request);
+    await this.setState({showDetails: false});
   }
-  showRequestDetails = (hash) => {
-    this.setState({
+  showRequestDetails = async (hash) => {
+    await this.setState({
       showDetails: true,
       hash:hash,
     });

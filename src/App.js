@@ -28,14 +28,17 @@ class App extends React.Component {
       loading: false,
       pastSearches: JSON.parse(localStorage.getItem('pastSearches')),
       method:'GET',
+      data: '',
     };
   }
 
-  talkToApi = async (requestObj) => {
+  talkToApi = async (requestObj = {method: this.state.method, url: this.state.url, data: this.state.data}) => {
 
     this.toggleLoading()
-    this.setState({ url: requestObj.url, data: requestObj.data});
-    this.setState({ method: requestObj.method})
+    await this.setState({ url: requestObj.url, data: requestObj.data});
+    console.log('state.data in App.js',this.state.data);
+    await this.setState({ method: requestObj.method})
+    console.log('method in App.js', this.state.method);
 
     try {
       let results = await axios(requestObj);
@@ -50,9 +53,15 @@ class App extends React.Component {
 
   toggleLoading = () => this.setState({loading: !this.state.loading});
 
-  getResults = (requestData) => {
+  updateRadio = async (apiPart, value) => {
+    await this.setState({[apiPart]: value});
+    console.log('App data', this.state.data);
+    console.log('app url', this.state.url)
+  }
+
+  getResults = async (requestData) => {
     this.toggleLoading();
-    this.setState({ requestData, resultsIn:'results' })
+    await this.setState({ requestData, resultsIn:'results' })
   }
 
   saveToLocalStorage = async (requestObj) => {
@@ -70,7 +79,8 @@ class App extends React.Component {
       <Header />
       <main>
         <Help />
-        <Form handleInput={this.talkToApi} defaultUrl={this.state.url} defaultMethod={this.state.method} defaultData={this.state.data}  />
+        <Form handleInput={this.talkToApi} defaultUrl={this.state.url} defaultMethod={this.state.method} defaultData={this.state.data}  updateRadio={this.updateRadio}/>
+        {/* <h1>method {this.state.method}</h1> */}
         <History pastSearches={this.state.pastSearches} talkToApi={this.talkToApi}/>
         <Results data={this.state.requestData} resultsIn={this.state.resultsIn} loading={this.state.loading} />
       </main>
