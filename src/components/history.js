@@ -27,12 +27,13 @@ class Histroy extends React.Component {
         <Switch>
           <Route exact path="/">
             <aside>
+              <h2>Previous Searches</h2>
               <ul>
                 {
                   Object.keys(this.props.pastSearches).map(hash =>
                     <li key={hash}>
-                      <span className={this.props.pastSearches[hash].method}>{this.props.pastSearches[hash].method} </span>
-                      <button onClick={() => this.makeRequest(this.props.pastSearches[hash])}> {this.props.pastSearches[hash].url} </button>
+                      <span className={this.props.pastSearches[hash].method}>{this.props.pastSearches[hash].method}</span>
+                      <button onClick={() => this.makeRequest(this.props.pastSearches[hash])}>{this.props.pastSearches[hash].url}</button>
                     </li>
                   )}
               </ul>
@@ -45,8 +46,8 @@ class Histroy extends React.Component {
                 {
                   Object.keys(this.props.pastSearches).map(hash =>
                     <li key={hash}>
-                      <span className={this.props.pastSearches[hash].method}>{this.props.pastSearches[hash].method} </span>
-                      <span onClick={() => this.showRequestDetails(hash)}> {this.props.pastSearches[hash].url} </span>
+                      <span className={this.props.pastSearches[hash].method}>{this.props.pastSearches[hash].method}</span>
+                      <span onClick={() => this.showRequestDetails(hash)}>{this.props.pastSearches[hash].url}</span>
                     </li>
                   )}
               </ul>

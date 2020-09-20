@@ -3,6 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import axios from 'axios';
 import md5 from 'md5';
 
+import './style/reset.scss'
 import './style/base.scss';
 import './style/header.scss';
 import './style/form.scss';

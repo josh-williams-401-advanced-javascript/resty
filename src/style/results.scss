@@ -4,30 +4,49 @@
   pre {
     max-height: 40vh;
     border: 1px solid black;
-    padding: 20px;
-    margin-left: 30%;
+    padding: 3px;
     
     div {
-      padding: 2px 0;
+      padding: 2px;
+      font-family: monospace;
     }
   }
-  h2{
-    margin-left: 30%;
-  }
+  grid-column: 2 / span 1;
 }
+
 #logo{
   width: 100%;
   display: flex;
   justify-content: center;
 }
 aside {
-  margin-left: 0;
+  margin: 10px 0;
   display: inline;
+  grid-row: 3 / span 2;
   li {
     list-style-type: none;
+    margin-bottom: 20px;
+    span {
+      padding: 6px;
+      text-align: center;
+      border-radius: 4px;
+      border: 1px solid black;
+      margin-right: 5px;
+    }
+  }
+  .GET {
+    background-color: rgb(95, 247, 95);
+  }
+  .POST {
+    background-color: rgb(249, 195, 95);
+  }
+  h2 {
+    margin: 0 0 20px 0;
   }
   ul {
+    // margin-top: 20px;
     padding-left: 0;
     display: inline;
+
   }
 }
