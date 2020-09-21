@@ -10,12 +10,12 @@ class Histroy extends React.Component {
       hash:'',
     }
   }
-  makeRequest = (request) => {
-    this.props.talkToApi(request);
-    this.setState({showDetails: false});
+  makeRequest = async (request) => {
+    await this.props.talkToApi(request);
+    await this.setState({showDetails: false});
   }
-  showRequestDetails = (hash) => {
-    this.setState({
+  showRequestDetails = async (hash) => {
+    await this.setState({
       showDetails: true,
       hash:hash,
     });
@@ -27,12 +27,13 @@ class Histroy extends React.Component {
         <Switch>
           <Route exact path="/">
             <aside>
+              <h2>Previous Searches</h2>
               <ul>
                 {
                   Object.keys(this.props.pastSearches).map(hash =>
                     <li key={hash}>
-                      <span className={this.props.pastSearches[hash].method}>{this.props.pastSearches[hash].method} </span>
-                      <button onClick={() => this.makeRequest(this.props.pastSearches[hash])}> {this.props.pastSearches[hash].url} </button>
+                      <span className={this.props.pastSearches[hash].method}>{this.props.pastSearches[hash].method}</span>
+                      <button onClick={() => this.makeRequest(this.props.pastSearches[hash])}>{this.props.pastSearches[hash].url}</button>
                     </li>
                   )}
               </ul>
@@ -40,30 +41,29 @@ class Histroy extends React.Component {
           </Route>
           <Route exact path="/history">
             <h2>History</h2>
-            <aside>
+            <aside className="history">
               <ul>
                 {
                   Object.keys(this.props.pastSearches).map(hash =>
                     <li key={hash}>
-                      <span className={this.props.pastSearches[hash].method}>{this.props.pastSearches[hash].method} </span>
-                      <span onClick={() => this.showRequestDetails(hash)}> {this.props.pastSearches[hash].url} </span>
+                      <span className={this.props.pastSearches[hash].method}>{this.props.pastSearches[hash].method}</span>
+                      <button onClick={() => this.showRequestDetails(hash)}>{this.props.pastSearches[hash].url}</button>
                     </li>
                   )}
               </ul>
             </aside >
                   {  (this.state.showDetails) ?
+                  
                   <div>
-
+                  <h2>Details</h2>
                     <p>{this.props.pastSearches[this.state.hash].method}</p>
                     <p>{this.props.pastSearches[this.state.hash].url}</p>
                     <p>{this.props.pastSearches[this.state.hash].data}</p>
-
                     <Link to="/" onClick={() => this.makeRequest(this.props.pastSearches[this.state.hash])}>
                       Re-Run
                     </Link>
-
                   </div>
-                  
+                
                   : null }
           </Route>
         </Switch>
